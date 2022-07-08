@@ -9,7 +9,8 @@ import com.example.bycar.ui.navigation.Screens
 fun SplashCar(navController: NavController) {
     Button(onClick = {
         navController.navigate(Screens.Main.route) {
-            popUpTo(navController.graph.startDestinationId) {
+            popUpTo(navController.currentDestination!!.id) {
+                inclusive = true
                 saveState = true
             }
             launchSingleTop = true
