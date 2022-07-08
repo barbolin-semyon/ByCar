@@ -23,4 +23,5 @@ sealed class HomeScreens(val route: String) {
     object TestDriver : HomeScreens("testDriver")
     object Dealers : HomeScreens("dealers")
     object DetailCar : HomeScreens("detailCar")
+    object Cars : HomeScreens("cars")
 }
