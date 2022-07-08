@@ -6,11 +6,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.example.bycar.ui.chat.Chat
+import com.example.bycar.ui.home.Home
+import com.example.bycar.ui.qr.QRScanner
+import com.example.bycar.ui.splash.SplashCar
 
 @Composable
 fun CarNavHost(navController: NavHostController) {
     NavHost(navController = navController, startDestination = Screens.Splash.route) {
-        composable(route = Screens.Splash.route) {}
+        composable(route = Screens.Splash.route) { SplashCar(navController) }
         main(navController = navController)
     }
 }
@@ -18,14 +22,14 @@ fun CarNavHost(navController: NavHostController) {
 private fun NavGraphBuilder.main(navController: NavHostController) {
     navigation(startDestination = MainScreens.Home.route, route = Screens.Main.route) {
         home(navController = navController)
-        composable(route = MainScreens.ScannerQR.route) {}
-        composable(route = MainScreens.Chat.route) {}
+        composable(route = MainScreens.ScannerQR.route) { QRScanner() }
+        composable(route = MainScreens.Chat.route) { Chat()}
     }
 }
 
 private fun NavGraphBuilder.home(navController: NavHostController) {
     navigation(startDestination = HomeScreens.Cars.route, route = MainScreens.Home.route) {
-        composable(HomeScreens.Cars.route) {}
+        composable(HomeScreens.Cars.route) { Home()}
         composable(HomeScreens.Dealers.route) {}
         composable(HomeScreens.DetailCar.route) {}
         composable(HomeScreens.TestDriver.route) {}
