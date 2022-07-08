@@ -4,6 +4,7 @@ import android.graphics.drawable.Icon
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -24,8 +25,11 @@ fun CarBottomNavigation(navController: NavHostController) {
         if (currentDestination.route != Screens.Splash.route) {
             BottomNavigation(backgroundColor = Color.White) {
                 screens.forEach { currentScreen ->
+
+                    val isSelected = currentDestination.hierarchy.any { it.route == currentScreen.route }
+
                     BottomNavigationItem(
-                        selected = currentDestination.hierarchy.any { it.route == currentScreen.route },
+                        selected = isSelected,
                         onClick = { navController.navigate(currentScreen.route) {
                             popUpTo(navController.graph.startDestinationId) {
                                 inclusive = true
@@ -38,8 +42,10 @@ fun CarBottomNavigation(navController: NavHostController) {
                             painter = painterResource(id = currentScreen.idImage),
                             contentDescription = currentScreen.description
                         ) },
-                        selectedContentColor = Color.Cyan,
+                        selectedContentColor = Color.Black,
                         unselectedContentColor = Color.Gray,
+                        label = {Text("●")},
+                        alwaysShowLabel = isSelected
                     )
                 }
             }
