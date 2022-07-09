@@ -15,17 +15,24 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.bycar.R
 import com.example.bycar.ui.theme.Gray200
+import com.example.bycar.ui.theme.Gray700
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun CarBottomNavigation(navController: NavHostController) {
     val backStackEntry = navController.currentBackStackEntryAsState()
     val currentDestination = backStackEntry.value?.destination
 
+    val systemContoller = rememberSystemUiController()
+
     val screens = listOf(MainScreens.Home, MainScreens.ScannerQR, MainScreens.Chat)
 
 
     if (currentDestination != null) {
         if (currentDestination.route != Screens.Splash.route) {
+
+            systemContoller.setStatusBarColor(Gray200)
+
             BottomNavigation(backgroundColor = Color.White) {
                 screens.forEach { currentScreen ->
 
@@ -64,6 +71,8 @@ fun CarBottomNavigation(navController: NavHostController) {
                     }
                 }
             }
+        } else {
+            systemContoller.setStatusBarColor(Gray700)
         }
     }
 
