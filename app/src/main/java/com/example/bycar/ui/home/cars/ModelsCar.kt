@@ -32,7 +32,12 @@ import java.util.*
 fun ModelsCars(navController: NavController, carNameSearch: String) {
 
     Column {
-        Headline()
+        Text(
+            text = "ALL MODELS",
+            fontWeight = FontWeight.Bold,
+            fontSize = 18.sp,
+            modifier = Modifier.padding(bottom = 8.dp, start = 16.dp, top = 32.dp)
+        )
         ListCars(carNameSearch = carNameSearch) {
 
         }
@@ -42,7 +47,7 @@ fun ModelsCars(navController: NavController, carNameSearch: String) {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun ListCars(carNameSearch: String, onClick: (car: Car) -> Unit) {
-    LazyRow() {
+    LazyRow(Modifier.padding(start = 8.dp)) {
 
         var isEven = true
         items(cars.filter { it.name.lowercase().contains(carNameSearch.lowercase()) }) { car ->
@@ -71,29 +76,4 @@ private fun ListCars(carNameSearch: String, onClick: (car: Car) -> Unit) {
             }
         }
     }
-}
-
-
-@Composable
-private fun Headline() {
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(text = "ALL MODELS", fontWeight = FontWeight.Bold)
-
-        TextButton(onClick = { /*TODO*/ }) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_arrow_right),
-                contentDescription = "detail",
-                tint = Orange200,
-                modifier = Modifier.size(40.dp)
-            )
-        }
-    }
-
 }
