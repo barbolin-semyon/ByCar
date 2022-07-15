@@ -22,6 +22,7 @@ import androidx.navigation.compose.rememberNavController
 import com.bumptech.glide.Glide
 import com.example.bycar.R
 import com.example.bycar.ui.home.cars.ModelsCars
+import com.example.bycar.ui.home.cars.ServicesCar
 import com.example.bycar.ui.theme.Gray700
 import com.skydoves.landscapist.glide.GlideImage
 
@@ -33,6 +34,7 @@ fun Cars(navController: NavHostController) {
         Headline()
         SearchCar(carNameSearch = carNameSearch)
         ModelsCars(navController = navController, carNameSearch = carNameSearch.value)
+        ServicesCar(navHostController = navController)
     }
 }
 
