@@ -17,18 +17,22 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.bumptech.glide.Glide
 import com.example.bycar.R
+import com.example.bycar.ui.home.cars.ModelsCars
 import com.example.bycar.ui.theme.Gray700
 import com.skydoves.landscapist.glide.GlideImage
 
-@Preview
+
 @Composable
-fun Cars() {
+fun Cars(navController: NavHostController) {
     val carNameSearch = remember { mutableStateOf("") }
     Column {
         Headline()
         SearchCar(carNameSearch = carNameSearch)
+        ModelsCars(navController = navController, carNameSearch = carNameSearch.value)
     }
 }
 
@@ -83,6 +87,8 @@ private fun SearchCar(carNameSearch: MutableState<String>) {
             leadingIconColor = Color.Gray,
             trailingIconColor = Color.Gray
         ),
-        modifier = Modifier.padding(top = 8.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
     )
 }

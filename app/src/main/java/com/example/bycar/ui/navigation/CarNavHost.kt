@@ -29,7 +29,7 @@ private fun NavGraphBuilder.main(navController: NavHostController) {
 
 private fun NavGraphBuilder.home(navController: NavHostController) {
     navigation(startDestination = HomeScreens.Cars.route, route = MainScreens.Home.route) {
-        composable(HomeScreens.Cars.route) { Cars()}
+        composable(HomeScreens.Cars.route) { Cars(navController = navController)}
         composable(HomeScreens.Dealers.route) {}
         composable(HomeScreens.DetailCar.route) {}
         composable(HomeScreens.TestDriver.route) {}
