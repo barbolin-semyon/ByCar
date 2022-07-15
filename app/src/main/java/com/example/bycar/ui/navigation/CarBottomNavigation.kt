@@ -31,7 +31,7 @@ fun CarBottomNavigation(navController: NavHostController) {
     if (currentDestination != null) {
         if (currentDestination.route != Screens.Splash.route) {
 
-            systemContoller.setStatusBarColor(Gray200)
+            systemContoller.setStatusBarColor(Color.White)
 
             BottomNavigation(backgroundColor = Color.White) {
                 screens.forEach { currentScreen ->
