@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/Android/ByCar/app/src/main/res/drawable-v24/ic_sort.xml" value="0.121" />
         <entry key="..\:/Projects/Android/ByCar/app/src/main/res/drawable/ic_chat.xml" value="0.121" />
         <entry key="..\:/Projects/Android/ByCar/app/src/main/res/drawable/ic_home.xml" value="0.121" />
         <entry key="..\:/Projects/Android/ByCar/app/src/main/res/drawable/ic_qr_code_scanner.xml" value="0.121" />
+        <entry key="..\:/Projects/Android/ByCar/app/src/main/res/drawable/ic_search.xml" value="0.121" />
       </map>
     </option>
   </component>

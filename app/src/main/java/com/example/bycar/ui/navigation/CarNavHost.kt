@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.bycar.ui.chat.Chat
-import com.example.bycar.ui.home.Home
+import com.example.bycar.ui.home.Cars
 import com.example.bycar.ui.qr.QRScanner
 import com.example.bycar.ui.splash.SplashCar
 
@@ -29,7 +29,7 @@ private fun NavGraphBuilder.main(navController: NavHostController) {
 
 private fun NavGraphBuilder.home(navController: NavHostController) {
     navigation(startDestination = HomeScreens.Cars.route, route = MainScreens.Home.route) {
-        composable(HomeScreens.Cars.route) { Home()}
+        composable(HomeScreens.Cars.route) { Cars()}
         composable(HomeScreens.Dealers.route) {}
         composable(HomeScreens.DetailCar.route) {}
         composable(HomeScreens.TestDriver.route) {}
