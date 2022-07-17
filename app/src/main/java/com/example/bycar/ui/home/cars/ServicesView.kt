@@ -10,19 +10,20 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import com.example.bycar.data.MyService
 import com.example.bycar.data.listServices
-import com.example.bycar.ui.theme.Gray200
+import com.example.bycar.ui.navigation.HomeScreens
 import com.example.bycar.ui.theme.Gray700
 
 @OptIn(ExperimentalFoundationApi::class, androidx.compose.material.ExperimentalMaterialApi::class)
 @Composable
-fun ServicesCar(navHostController: NavHostController) {
+fun ServicesCar(navHostController: NavController) {
     LazyColumn {
         stickyHeader {
             Text(
@@ -42,7 +43,7 @@ fun ServicesCar(navHostController: NavHostController) {
                 onClick = {
                     navigateToDetailService(
                         navHostController = navHostController,
-                        service.routeForNavigate
+                        myService = service
                     )
                 }
             ) {
@@ -71,8 +72,11 @@ fun ServicesCar(navHostController: NavHostController) {
     }
 }
 
-private fun navigateToDetailService(navHostController: NavHostController, route: String) {
-    navHostController.navigate(route = route) {
+private fun navigateToDetailService(navHostController: NavController, myService: MyService) {
+
+    navHostController.currentBackStackEntry?.savedStateHandle?.set("service", myService)
+
+    navHostController.navigate(route = HomeScreens.Service.route) {
         popUpTo(navHostController.graph.startDestinationId) {
             saveState = true
         }
