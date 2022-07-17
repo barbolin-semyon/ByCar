@@ -2,6 +2,7 @@ package com.example.bycar.ui.home.services
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -16,6 +17,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.bycar.data.MyService
 import com.example.bycar.ui.theme.Gray700
+import io.github.boguszpawlowski.composecalendar.SelectableCalendar
+import io.github.boguszpawlowski.composecalendar.header.DefaultMonthHeader
+import io.github.boguszpawlowski.composecalendar.rememberCalendarState
+import io.github.boguszpawlowski.composecalendar.rememberSelectableCalendarState
+import io.github.boguszpawlowski.composecalendar.selection.SelectionMode
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.YearMonth
+import java.time.format.DateTimeFormatter
+import java.time.format.TextStyle
+import java.util.*
 
 @Composable
 fun ServiceView(navController: NavController, myService: MyService) {
@@ -29,7 +41,7 @@ fun ServiceView(navController: NavController, myService: MyService) {
         Icon(
             painter = painterResource(id = myService.icon),
             contentDescription = myService.name,
-            modifier = Modifier.size(300.dp),
+            modifier = Modifier.size(150.dp),
             tint = Color.White
         )
 
@@ -54,6 +66,10 @@ fun ServiceView(navController: NavController, myService: MyService) {
                 .padding(top = 16.dp)
         )
 
+        val calendarState = rememberSelectableCalendarState(
+            initialSelectionMode = SelectionMode.Single
+        )
 
+        Calendar(calendarState = calendarState)
     }
 }

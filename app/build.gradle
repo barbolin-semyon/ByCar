@@ -74,4 +74,7 @@ dependencies {
 
     //Glide
     implementation "com.github.skydoves:landscapist-glide:1.5.2"
+
+    implementation "io.github.boguszpawlowski.composecalendar:composecalendar:0.5.1"
+    implementation "io.github.boguszpawlowski.composecalendar:kotlinx-datetime:0.5.1"
 }
