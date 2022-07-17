@@ -3,8 +3,10 @@ package com.example.bycar.ui.home.services
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,7 +37,7 @@ fun ServiceView(navController: NavController, myService: MyService) {
         Modifier
             .fillMaxSize()
             .background(Gray700),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
         Icon(
@@ -45,31 +47,22 @@ fun ServiceView(navController: NavController, myService: MyService) {
             tint = Color.White
         )
 
-        Text(
-            textAlign = TextAlign.Center,
-            text = myService.name,
-            fontSize = 32.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.White,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 16.dp)
-        )
-
-        Text(
-            textAlign = TextAlign.Center,
-            text = myService.description,
-            fontSize = 18.sp,
-            color = Color.White,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 16.dp)
-        )
-
         val calendarState = rememberSelectableCalendarState(
-            initialSelectionMode = SelectionMode.Single
+            initialSelectionMode = SelectionMode.Single,
         )
 
         Calendar(calendarState = calendarState)
+
+        Button(
+            onClick = { /*TODO*/ },
+            enabled = calendarState.selectionState.selection.isNotEmpty(),
+            modifier = Modifier.padding(top = 16.dp)
+        ) {
+            Text(
+                "Оставить заявку", fontSize = 24.sp
+            )
+        }
+
+
     }
 }

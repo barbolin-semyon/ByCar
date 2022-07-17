@@ -31,7 +31,7 @@ fun Calendar(calendarState: CalendarState<DynamicSelectionState>) {
         monthHeader = { MonthHeader(monthState = calendarState.monthState)},
 
         showAdjacentMonths = false,
-        modifier = Modifier.padding(8.dp),
+        modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 32.dp),
         calendarState = calendarState,
         weekHeader = {WeekHeader(it)}
     )
