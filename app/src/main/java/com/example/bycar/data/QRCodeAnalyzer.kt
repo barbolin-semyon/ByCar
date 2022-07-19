@@ -8,20 +8,19 @@ import com.google.zxing.common.HybridBinarizer
 import java.lang.Exception
 import java.nio.ByteBuffer
 
-class QRCodeAnalyzer(
+class QrCodeAnalyzer(
     private val onQrCodeScanned: (String) -> Unit
-) : ImageAnalysis.Analyzer {
+): ImageAnalysis.Analyzer {
 
-    private val supportImageFormats = listOf(
+    private val supportedImageFormats = listOf(
         ImageFormat.YUV_420_888,
         ImageFormat.YUV_422_888,
         ImageFormat.YUV_444_888,
     )
 
     override fun analyze(image: ImageProxy) {
-        if (image.format in supportImageFormats) {
+        if(image.format in supportedImageFormats) {
             val bytes = image.planes.first().buffer.toByteArray()
-
             val source = PlanarYUVLuminanceSource(
                 bytes,
                 image.width,
@@ -32,7 +31,6 @@ class QRCodeAnalyzer(
                 image.height,
                 false
             )
-
             val binaryBmp = BinaryBitmap(HybridBinarizer(source))
             try {
                 val result = MultiFormatReader().apply {
@@ -45,7 +43,7 @@ class QRCodeAnalyzer(
                     )
                 }.decode(binaryBmp)
                 onQrCodeScanned(result.text)
-            } catch (e: Exception) {
+            } catch(e: Exception) {
                 e.printStackTrace()
             } finally {
                 image.close()
@@ -55,8 +53,8 @@ class QRCodeAnalyzer(
 
     private fun ByteBuffer.toByteArray(): ByteArray {
         rewind()
-        return ByteArray(remaining().also {
+        return ByteArray(remaining()).also {
             get(it)
-        })
+        }
     }
 }
