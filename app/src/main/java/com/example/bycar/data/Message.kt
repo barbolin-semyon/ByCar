@@ -1,30 +1,24 @@
 package com.example.bycar.data
 
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.MonthDay
 import java.util.*
 
 data class Message(
-    val date: Calendar,
+    val date: LocalDate,
+    val time: LocalTime,
     val isUser: Boolean,
     val text: String
 )
 
-val chat = listOf(
-    Message(Calendar.getInstance().apply{set(2022, 8, 3, 1, 17)}, true, "Hello"),
-    Message(Calendar.getInstance().apply{set(2022, 8, 3, 1, 25)}, true, "How are you?"),
-    Message(Calendar.getInstance().apply{set(2022, 8, 3, 1, 34)}, true, "dsfsdfsd"),
-    Message(Calendar.getInstance().apply{set(2022, 8, 3, 1, 50)}, true, "dfgrethdfh"),
-    Message(Calendar.getInstance().apply{set(2022, 8, 5, 2, 34)}, true, "dsgdfcbvcb"),
-    Message(Calendar.getInstance().apply{set(2022, 8, 5, 3, 34)}, true, "rdfgdfhhfgdhfghgfhgfhfgh"),
-    Message(Calendar.getInstance().apply{set(2022, 8, 5, 4, 34)}, true, "dfgvnfghrthtrfggfhfghfgh"),
-    Message(Calendar.getInstance().apply{set(2022, 8, 5, 5, 34)}, true, "reiogreihmterihmtrhtm!"),
-    Message(Calendar.getInstance().apply{set(2022, 8, 5, 6, 34)}, true, "dfgmkfdgkmdflkg"),
-    Message(Calendar.getInstance().apply{set(2022, 9, 3, 4, 34)}, true, "ssdfsgierjtmgodfh"),
-    Message(Calendar.getInstance().apply{set(2022, 9, 3, 5, 34)}, true, "sdfgjndfgj"),
-    Message(Calendar.getInstance().apply{set(2022, 9, 3, 10, 34)}, true, "Hdsfffffffffffffffffwergfgffdgfg"),
-    Message(Calendar.getInstance().apply{set(2022, 9, 3, 11, 34)}, true, "sdfgdfhvgryhtrhgfhfdghhhhhhhhhhhhhhhhhhhhhhhfdgfdgfdg"),
-    Message(Calendar.getInstance().apply{set(2022, 11, 3, 12, 34)}, true, "Hello"),
-    Message(Calendar.getInstance().apply{set(2022, 11, 3, 13, 34)}, true, "Hello"),
-    Message(Calendar.getInstance().apply{set(2022, 11, 3, 17, 34)}, true, "Hello"),
-    Message(Calendar.getInstance().apply{set(2023, 3, 3, 17, 34)}, true, "Hello"),
+val chat = mutableListOf(
+    Message(LocalDate.of(2022, 7, 3), time = LocalTime.of(4, 2), true, "Hello"),
+    Message(LocalDate.of(2022, 8, 3), time = LocalTime.of(4, 2), false, "How are you?"),
+    Message(LocalDate.of(2022, 8, 3), time = LocalTime.of(8, 2), true, "dsfsdfsd"),
+    Message(LocalDate.of(2023, 9, 3), time = LocalTime.of(4, 2), false, "dfgrethdfh"),
+    Message(LocalDate.of(2023, 10, 3), time = LocalTime.of(4, 2), true, "dfgfdsfsdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffrethdfh"),
+    Message(LocalDate.of(2023, 10, 3), time = LocalTime.of(4, 5), true, "dfgrethdfh"),
 
 )
