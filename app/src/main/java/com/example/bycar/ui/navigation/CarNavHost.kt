@@ -7,9 +7,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.example.bycar.data.Car
 import com.example.bycar.data.MyService
 import com.example.bycar.ui.chat.Chat
 import com.example.bycar.ui.home.Cars
+import com.example.bycar.ui.home.detailCar.DetailCarView
 import com.example.bycar.ui.home.services.ServiceView
 import com.example.bycar.ui.qr.QRScanner
 import com.example.bycar.ui.splash.SplashCar
@@ -35,7 +37,11 @@ private fun NavGraphBuilder.main(navController: NavController) {
 private fun NavGraphBuilder.home(navController: NavController) {
     navigation(startDestination = HomeScreens.Cars.route, route = MainScreens.Home.route) {
         composable(HomeScreens.Cars.route) { Cars(navController = navController) }
-        composable(HomeScreens.ByCar.route) {}
+        composable(HomeScreens.DetailCar.route) {
+            val car = navController.previousBackStackEntry?.savedStateHandle?.get<Car>("car")
+
+            car?.let { DetailCarView(it) }
+        }
         composable(HomeScreens.Service.route) {
             val service =
                 navController.previousBackStackEntry?.savedStateHandle?.get<MyService>("service")

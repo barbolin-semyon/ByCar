@@ -21,6 +21,6 @@ sealed class MainScreens(
 
 sealed class HomeScreens(val route: String) {
     object Service : HomeScreens("testDriver")
-    object ByCar : HomeScreens("dealers")
+    object DetailCar : HomeScreens("dealers")
     object Cars : HomeScreens("cars")
 }

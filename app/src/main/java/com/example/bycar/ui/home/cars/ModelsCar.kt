@@ -23,6 +23,7 @@ import androidx.navigation.NavController
 import com.example.bycar.R
 import com.example.bycar.data.Car
 import com.example.bycar.data.cars
+import com.example.bycar.ui.navigation.HomeScreens
 import com.example.bycar.ui.theme.Gray200
 import com.example.bycar.ui.theme.Gray700
 import com.example.bycar.ui.theme.Orange200
@@ -39,7 +40,9 @@ fun ModelsCars(navController: NavController, carNameSearch: String) {
             modifier = Modifier.padding(bottom = 8.dp, start = 16.dp, top = 32.dp)
         )
         ListCars(carNameSearch = carNameSearch) {
+            navController.currentBackStackEntry?.savedStateHandle?.set("car", it)
 
+            navController.navigate(HomeScreens.DetailCar.route)
         }
     }
 }
